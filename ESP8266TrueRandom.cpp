@@ -7,7 +7,15 @@
 #include <Arduino.h>
 #include "ESP8266TrueRandom.h"
 
+unsigned long lastYield = 0;
+
 int ESP8266TrueRandomClass::randomBitRaw(void) {
+  // Needed to keep wifi stack running smoothly
+  // And to avoid wds reset
+  if (lastYield == 0 || millis() - lastYield >= 50) {
+    yield();
+    lastYield = millis();
+  }
   uint8_t bit = analogRead(A0);
 
   return bit & 1;
