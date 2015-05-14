@@ -4,11 +4,11 @@
  * Copyright (c) 2010 Peter Knight, Tinker.it! All rights reserved.
  */
 
-#ifndef TrueRandom_h
-#define TrueRandom_h
+#ifndef ESP8266TrueRandom_h
+#define ESP8266TrueRandom_h
 
 #include <inttypes.h>
-class TrueRandomClass
+class ESP8266TrueRandomClass
 {
   public:
     int rand();
@@ -24,5 +24,5 @@ class TrueRandomClass
     int randomBitRaw(void);
     int randomBitRaw2(void);
 };
-extern TrueRandomClass TrueRandom;
+extern ESP8266TrueRandomClass ESP8266TrueRandom;
 #endif
