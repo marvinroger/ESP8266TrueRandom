@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-TrueRandom  KEYWORD1
+ESP8266TrueRandom  KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
