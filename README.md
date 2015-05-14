@@ -89,6 +89,10 @@ When operating devices on an Ethernet network, each device must have a unique MA
 
 UUIDs are unique identifiers. They are 16 bytes (128 bits) long, which means that generating them randomly This generates a random UUID, and writes it to an array. UUIDs are globally unique numbers that are often used in web services and production electronics. ESP8266TrueRandom can produce any one of 5,316,911,983,139,663,491,615,228,241,121,378,304 different numbers. You're more likely to win top prize in the national lottery 3 times in a row than get two matching UUIDs.
 
+### ESP8266TrueRandom.uuidToString(address)
+
+Returns a String containing the string representation of the given UUID
+
 ## How TrueRandom works
 
 It is hard to get a truly random number from Arduino. ESP8266TrueRandom does it by measuring TOUT pin, and then discarding all but the least significant bit of the measured value. However, that isn't noisy enough, so a [von Neumann whitening algorithm](http://en.wikipedia.org/wiki/Hardware_random_number_generator) gathers enough entropy from multiple readings to ensure a fair distribution of 1s and 0s.
