@@ -7,6 +7,7 @@
 #ifndef ESP8266TrueRandom_h
 #define ESP8266TrueRandom_h
 
+#include <Arduino.h>
 #include <inttypes.h>
 class ESP8266TrueRandomClass
 {
@@ -20,6 +21,7 @@ class ESP8266TrueRandomClass
     void memfill(char* location, int size);
     void mac(uint8_t* macLocation);
     void uuid(uint8_t* uuidLocation);
+    String uuidToString(uint8_t* uuidLocation);
   private:
     int randomBitRaw(void);
     int randomBitRaw2(void);
