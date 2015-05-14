@@ -4,7 +4,6 @@
  * Copyright (c) 2010 Peter Knight, Tinker.it! All rights reserved.
  */
 
-#include <Arduino.h>
 #include "ESP8266TrueRandom.h"
 
 unsigned long lastYield = 0;
@@ -137,6 +136,25 @@ void ESP8266TrueRandomClass::uuid(uint8_t* uuidLocation) {
   // The other 6 bits are fixed, to indicate a version number.
   uuidLocation[6] = 0x40 | (0x0F & uuidLocation[6]);
   uuidLocation[8] = 0x80 | (0x3F & uuidLocation[8]);
+}
+
+String TrueRandomClass::uuidToString(uint8_t* uuidLocation) {
+  String string = "";
+  int i;
+  for (i=0; i<16; i++) {
+    if (i==4) string += "-";
+    if (i==6) string += "-";
+    if (i==8) string += "-";
+    if (i==10) string += "-";
+    int topDigit = uuidLocation[i] >> 4;
+    int bottomDigit = uuidLocation[i] & 0x0f;
+    // High hex digit
+    string += "0123456789abcdef"[topDigit];
+    // Low hex digit
+    string += "0123456789abcdef"[bottomDigit];
+  }
+  
+  return string;
 }
 
 ESP8266TrueRandomClass ESP8266TrueRandom;
