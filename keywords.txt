@@ -19,6 +19,7 @@ randomByte  KEYWORD2
 memfill KEYWORD2
 mac KEYWORD2
 uuid  KEYWORD2
+uuidToString  KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
