@@ -5,15 +5,15 @@
  */
 
 #include <Arduino.h>
-#include "TrueRandom.h"
+#include "ESP8266TrueRandom.h"
 
-int TrueRandomClass::randomBitRaw(void) {
+int ESP8266TrueRandomClass::randomBitRaw(void) {
   uint8_t bit = analogRead(A0);
 
   return bit & 1;
 }
 
-int TrueRandomClass::randomBitRaw2(void) {
+int ESP8266TrueRandomClass::randomBitRaw2(void) {
   // Software whiten bits using Von Neumann algorithm
   //
   // von Neumann, John (1951). "Various techniques used in connection
@@ -28,7 +28,7 @@ int TrueRandomClass::randomBitRaw2(void) {
   }
 }
 
-int TrueRandomClass::randomBit(void) {
+int ESP8266TrueRandomClass::randomBit(void) {
   // Software whiten bits using Von Neumann algorithm
   //
   // von Neumann, John (1951). "Various techniques used in connection
@@ -43,28 +43,28 @@ int TrueRandomClass::randomBit(void) {
   }
 }
 
-char TrueRandomClass::randomByte(void) {
+char ESP8266TrueRandomClass::randomByte(void) {
   char result;
   uint8_t i;
   for (i=8; i--;) result += result + randomBit();
   return result;
 }
 
-int TrueRandomClass::rand() {
+int ESP8266TrueRandomClass::rand() {
   int result;
   uint8_t i;
   for (i=15; i--;) result += result + randomBit();
   return result;
 }
 
-long TrueRandomClass::random() {
+long ESP8266TrueRandomClass::random() {
   long result;
   uint8_t i;
   for (i=31; i--;) result += result + randomBit();
   return result;
 }
 
-long TrueRandomClass::random(long howBig) {
+long ESP8266TrueRandomClass::random(long howBig) {
   long randomValue;
   long maxRandomValue;
   long topBit;
@@ -108,21 +108,21 @@ long TrueRandomClass::random(long howBig) {
   return randomValue;
 }
 
-long TrueRandomClass::random(long howSmall, long howBig) {
+long ESP8266TrueRandomClass::random(long howSmall, long howBig) {
   if (howSmall >= howBig) return howSmall;
   long diff = howBig - howSmall;
   return TrueRandomClass::random(diff) + howSmall;
 }
 
-void TrueRandomClass::memfill(char* location, int size) {
+void ESP8266TrueRandomClass::memfill(char* location, int size) {
   for (;size--;) *location++ = randomByte();
 }
 
-void TrueRandomClass::mac(uint8_t* macLocation) {
+void ESP8266TrueRandomClass::mac(uint8_t* macLocation) {
   memfill((char*)macLocation,6);
 }
 
-void TrueRandomClass::uuid(uint8_t* uuidLocation) {
+void ESP8266TrueRandomClass::uuid(uint8_t* uuidLocation) {
   // Generate a Version 4 UUID according to RFC4122
   memfill((char*)uuidLocation,16);
   // Although the UUID contains 128 bits, only 122 of those are random.
@@ -131,4 +131,4 @@ void TrueRandomClass::uuid(uint8_t* uuidLocation) {
   uuidLocation[8] = 0x80 | (0x3F & uuidLocation[8]);
 }
 
-TrueRandomClass TrueRandom;
+ESP8266TrueRandomClass ESP8266TrueRandom;
