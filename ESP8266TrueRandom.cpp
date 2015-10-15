@@ -118,7 +118,7 @@ long ESP8266TrueRandomClass::random(long howBig) {
 long ESP8266TrueRandomClass::random(long howSmall, long howBig) {
   if (howSmall >= howBig) return howSmall;
   long diff = howBig - howSmall;
-  return TrueRandomClass::random(diff) + howSmall;
+  return ESP8266TrueRandomClass::random(diff) + howSmall;
 }
 
 void ESP8266TrueRandomClass::memfill(char* location, int size) {
@@ -138,7 +138,7 @@ void ESP8266TrueRandomClass::uuid(uint8_t* uuidLocation) {
   uuidLocation[8] = 0x80 | (0x3F & uuidLocation[8]);
 }
 
-String TrueRandomClass::uuidToString(uint8_t* uuidLocation) {
+String ESP8266TrueRandomClass::uuidToString(uint8_t* uuidLocation) {
   String string = "";
   int i;
   for (i=0; i<16; i++) {
