@@ -1,7 +1,7 @@
 # ESP8266TrueRandom
 TrueRandom Arduino library for the ESP8266
 
-**The code is only slightly modified from [tinkerit TrueRandom](https://code.google.com/archive/p/tinkerit/) to work on the ESP8266, and this is probably not as random as the original. However, it still performs better than the original random function, based on my tests. What I wanted was a library to generate an UUID for an home automation system using ESP8266, and unless you have millions of devices, I think this is random enough to avoid conflicts.**
+**The code is only slightly modified from [tinkerit TrueRandom](https://code.google.com/archive/p/tinkerit/wikis/TrueRandom.wiki) to work on the ESP8266, and this is probably not as random as the original. However, it still performs better than the original random function, based on my tests. What I wanted was a library to generate an UUID for an home automation system using ESP8266, and unless you have millions of devices, I think this is random enough to avoid conflicts.**
 
 ## Introduction
 
