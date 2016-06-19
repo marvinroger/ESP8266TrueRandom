@@ -1,7 +1,7 @@
 # ESP8266TrueRandom
 TrueRandom Arduino library for the ESP8266
 
-**The code is only slightly modified from tinkerit TrueRandom to work on the ESP8266, and this is probably not as random as the original. However, it still performs better than the original random function, based on my tests. What I wanted was a library to generate an UUID for an home automation system using ESP8266, and unless you have millions of devices, I think this is random enough to avoid conflicts.**
+**The code is only slightly modified from [tinkerit TrueRandom](https://code.google.com/archive/p/tinkerit/) to work on the ESP8266, and this is probably not as random as the original. However, it still performs better than the original random function, based on my tests. What I wanted was a library to generate an UUID for an home automation system using ESP8266, and unless you have millions of devices, I think this is random enough to avoid conflicts.**
 
 ## Introduction
 
@@ -9,7 +9,7 @@ ESP8266TrueRandom generates true random numbers on ESP8266. They are different e
 
 ## Compatibility
 
-ESP8266TrueRandom currently functions on the ESP8266. ESP8266TrueRandom uses TOUT pin. Do not connect anything to this pin. These restrictions may be removed in future versions of this library.
+ESP8266TrueRandom currently functions on the ESP8266. ESP8266TrueRandom reads the ESP8266 internal hardware random number generator register by default or alternatively can use the A0/TOUT pin when useRNG is set to false. If using A0/TOUT do not connect anything to this pin and leave it floating.
 
 ## Download
 
@@ -95,6 +95,6 @@ Returns a String containing the string representation of the given UUID
 
 ## How TrueRandom works
 
-It is hard to get a truly random number from Arduino. ESP8266TrueRandom does it by measuring TOUT pin, and then discarding all but the least significant bit of the measured value. However, that isn't noisy enough, so a [von Neumann whitening algorithm](http://en.wikipedia.org/wiki/Hardware_random_number_generator) gathers enough entropy from multiple readings to ensure a fair distribution of 1s and 0s.
+ESP8266TrueRandom achieves random numbers by reading the ESP8266 internal hardware random number generator register or by by measuring the A0/TOUT pin. However, that isn't noisy enough so a [von Neumann whitening algorithm](http://en.wikipedia.org/wiki/Hardware_random_number_generator) gathers enough entropy from multiple readings to ensure a fair distribution of 1s and 0s.
 
 The other functions within ESP8266TrueRandom construct the requested values by gathering just enough random bits to produce the required numbers. Generating a random bit takes time, so a significant part of the code works to ensure the random bits are used as efficiently as possible.
