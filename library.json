@@ -12,6 +12,5 @@
   "platforms":
   [
     "espressif",
-    "atmelsam"
   ]
 }
