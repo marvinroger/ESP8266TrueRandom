@@ -11,6 +11,6 @@
   "frameworks": "arduino",
   "platforms":
   [
-    "espressif",
+    "espressif8266"
   ]
 }
