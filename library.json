@@ -1,6 +1,6 @@
 {
   "name": "ESP8266TrueRandom",
-  "keywords": "ramdom",
+  "keywords": "random",
   "description": "TrueRandom Arduino library for the ESP8266",
   "version": "1.0",
   "repository":
@@ -11,6 +11,6 @@
   "frameworks": "arduino",
   "platforms":
   [
-    "espressif",
+    "espressif8266",
   ]
 }
